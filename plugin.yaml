@@ -1,0 +1,23 @@
+name: ssh
+shortDesc: Allows you to ssh directly from `kubectl`
+longDesc: |
+  Opens up an SSH connection to the node that you pass into the command,
+  allowing you to work faster without writing out the full ssh command.
+example: kubectl plugin ssh <node-name>
+command: ./ssh.sh
+flags:
+  - name: ssh-user
+    shorthand: u
+    desc: User to use for the ssh command.
+    defValue: ec2-user
+  - name: cloud-provider
+    shorthand: p
+    desc: Use this flag if you are using AWS EKS # currently supports on AWS EKS
+    defValue: aws
+  - name: identity-file
+    shorthand: i
+    desc: Identity file to use for the ssh command.
+    defValue: ~/.ssh/test.pem
+  - name: selector
+    shorthand: l
+    desc: Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
