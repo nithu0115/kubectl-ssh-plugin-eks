@@ -29,7 +29,7 @@ get_sysinfo()
       ;;
     *)
       OS=$(uname -s)
-      if grep --quiet "Darwin" "${OS}"; then
+      if [ "${OS}" == "Darwin" ]; then
         os_name="Darwin"
       fi
       ;;
@@ -46,10 +46,10 @@ get_publicIP()
   get_sysinfo
   case "${os_name}" in
     Linux)
-      getpublicip="$HOME/.kube/plugins/kubectl-ssh/getpublicip_linux" 2>&1
+      getpublicip="$HOME/.kube/plugins/kubectl-ssh-plugin-eks/getpublicip_linux" 2>&1
       ;;
     Darwin)
-      getpublicip="$HOME/.kube/plugins/kubectl-ssh/getpublicip_darwin" 2>&1
+      getpublicip="$HOME/.kube/plugins/kubectl-ssh-plugin-ek/getpublicip_darwin" 2>&1
       ;;
   esac
 }
