@@ -10,6 +10,7 @@ path.
 [source,shell]
 ----
 mkdir -p ~/.kube/plugins
+git clone https://github.com/nithu0115/kubectl-ssh-plugin-eks.git
 ----
 
 == Usage
