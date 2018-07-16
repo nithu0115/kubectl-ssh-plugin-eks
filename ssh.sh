@@ -49,7 +49,7 @@ get_publicIP()
       getpublicip="$HOME/.kube/plugins/kubectl-ssh-plugin-eks/getpublicip_linux" 2>&1
       ;;
     Darwin)
-      getpublicip="$HOME/.kube/plugins/kubectl-ssh-plugin-ek/getpublicip_darwin" 2>&1
+      getpublicip="$HOME/.kube/plugins/kubectl-ssh-plugin-eks/getpublicip_darwin" 2>&1
       ;;
   esac
 }
