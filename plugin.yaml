@@ -4,7 +4,7 @@ longDesc: |
   Opens up an SSH connection to the node that you pass into the command,
   allowing you to work faster without writing out the full ssh command.
 example: kubectl plugin ssh <node-name>
-command: ./ssh.sh
+command: ./script_ssh.sh
 flags:
   - name: ssh-user
     shorthand: u

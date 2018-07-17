@@ -15,12 +15,12 @@ git clone https://github.com/nithu0115/kubectl-ssh-plugin-eks.git
 
 == Usage
 
-You should have a ssh key pair in your `~/.ssh/` you will be able to use
+You should have a ssh key pair in your `~/.ssh/` directory and you will be able to use
 this plugin to `ssh` into the Worker nodes which are part of the Cluster.
 
 [source,shell]
 ----
-kubectl plugin ssh <node-name>
+kubectl plugin ssh <worker node name>
 ----
 
 If you need to pass an ssh key you can pass the `-i` flag that will append the
@@ -31,7 +31,7 @@ proper identity file.
 kubectl plugin ssh <node-name> -i ~/.ssh/Nithish.pem
 ----
 
-If you'd like to see the full usage you can pass `--help` to print out the
+To see the full usage of the plugin, you can pass `--help` to print out the
 following.
 
 [source,shell]
@@ -44,17 +44,17 @@ Examples:
 
 Options:
   -p, --cloud-provider='aws': Use this flag if you are using AWS EKS
-  -i, --identity-file='~/.ssh/id_rsa': Identity file to use for the ssh command.
+  -i, --identity-file='~/.ssh/id_rsa': Identity file to use to ssh into the instance.
   -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
-  -u, --ssh-user='ec2-user': User to use for the ssh command.
+  -u, --ssh-user='ec2-user': Login user to be used for the ssh command.
 
 Usage:
   kubectl plugin ssh [flags] [options]
 
-Use "kubectl options" for a list of global command-line options (applies to all commands).
+Use "kubectl options" to list global command-line options (applies to all commands).
 ----
 
 == Roadmap
 
-* Add support for SSHing into `worker nodes` from Windows machine.
+* Add support to SSHing into `worker nodes` from Windows machine.
 
