@@ -28,7 +28,7 @@ proper identity file.
 
 [source,shell]
 ----
-kubectl plugin ssh <node-name> -i ~/.ssh/Nithish.pem
+kubectl plugin ssh <worker node name> -i ~/.ssh/Nithish.pem
 ----
 
 To see the full usage of the plugin, you can pass `--help` to print out the
@@ -40,7 +40,7 @@ Opens up an SSH connection to the node that you pass into the command, allowing 
 the full ssh command.
 
 Examples:
-  kubectl plugin ssh <node-name>
+  kubectl plugin ssh <worker node name>
 
 Options:
   -p, --cloud-provider='aws': Use this flag if you are using AWS EKS
