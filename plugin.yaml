@@ -17,7 +17,9 @@ flags:
   - name: identity-file
     shorthand: i
     desc: Identity file to use for the ssh command.
-    defValue: ~/.ssh/test.pem
+  - name: jump-host
+    shorthand: j
+    desc: Use this flag is you are using a Jump/Bastion Host
   - name: selector
     shorthand: l
     desc: Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
