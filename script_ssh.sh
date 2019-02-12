@@ -82,7 +82,7 @@ else [ "$KUBECTL_PLUGINS_LOCAL_FLAG_CLOUD_PROVIDER" == "aws" ]
     select yn in "Yes" "No"; do
       case $yn in
         Yes ) [[ ! -z "${IP}" ]] && ssh ${KUBECTL_PLUGINS_LOCAL_FLAG_SSH_USER}@$IP || echo "Can't SSH"; exit 1;;
-        NO ) exit;;
+        No ) exit;;
       esac
     done
   elif [ "${DNS_TYPE}" == "PrivateDnsName" ]
@@ -91,7 +91,7 @@ else [ "$KUBECTL_PLUGINS_LOCAL_FLAG_CLOUD_PROVIDER" == "aws" ]
     select yn in "Yes" "No"; do
       case $yn in
         Yes ) [[ ! -z "${IP}" ]] && ssh -i ${KUBECTL_PLUGINS_LOCAL_FLAG_IDENTITY_FILE} ${KUBECTL_PLUGINS_LOCAL_FLAG_SSH_USER}@$IP || echo "Can't SSH"; exit 1;;
-        NO ) exit;;
+        No ) exit;;
       esac
     done
   else
