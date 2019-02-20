@@ -70,6 +70,9 @@ else [ "$KUBECTL_PLUGINS_LOCAL_FLAG_CLOUD_PROVIDER" == "aws" ]
     pathregion="{.items[0].spec.providerID}"
   fi
   instanceID=$(kubectl get node $1 -o jsonpath="${path}" $selector)
+  if [ -z "${instanceID}" ]; then
+    instanceID=$(kubectl get node $1 -o jsonpath="${pathregion}" $selector | awk -F/ '{print $5}')
+  fi
   region=$(kubectl get node $1 -o jsonpath="${pathregion}" $selector | awk -F/ '{print $4}')
   get_publicIP
   BOTH_IP_DNS=`${getpublicip} -region=${region%?} -instanceid=$instanceID`
