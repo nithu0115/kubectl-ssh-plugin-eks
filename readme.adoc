@@ -1,11 +1,12 @@
-= kubectl SSH into EKS Worker Nodes Plugin
+## Kubectl plugin to SSH into EKS Worker Nodes
 
-This plugin will provide you with an easy to use command for ssh'ing into a
-Kubernetes Worker nodes running on AWS EKS. To use this command you need to run `kubectl` version 1.10+
-once you have that installed you just need to add this package to the install
-path.
+This plugin will provide an easy way to SSH into Kubernetes Worker nodes running and have joined the Amazon EKS cluster using `kubectl`. 
 
-== Installation
+### Prerequisite
+ 
+To use the plugin you should have `kubectl` version 1.10 and above. 
+
+### Installation on Linux/Mac
 
 [source,shell]
 ----
@@ -13,7 +14,7 @@ mkdir -p ~/.kube/plugins
 git clone https://github.com/nithu0115/kubectl-ssh-plugin-eks.git
 ----
 
-== Usage
+### Usage
 
 You should have a ssh key pair in your `~/.ssh/` directory and you will be able to use
 this plugin to `ssh` into the Worker nodes which are part of the Cluster.
@@ -23,38 +24,32 @@ this plugin to `ssh` into the Worker nodes which are part of the Cluster.
 kubectl plugin ssh <worker node name>
 ----
 
-If you need to pass an ssh key you can pass the `-i` flag that will append the
-proper identity file.
+To pass an ssh key, please use `-i` flag that will append the proper identity file.
 
 [source,shell]
 ----
 kubectl plugin ssh <worker node name> -i ~/.ssh/Nithish.pem
 ----
 
-To see the full usage of the plugin, you can pass `--help` to print out the
-following.
+To see the full usage of the SSH plugin, please use `--help` flag to print the following.
 
 [source,shell]
 ----
-Opens up an SSH connection to the node that you pass into the command, allowing you to work faster without writing out
-the full ssh command.
+Usage:
+  kubectl plugin ssh <worker node name> [options]
 
-Examples:
-  kubectl plugin ssh <worker node name>
+Opens up an SSH connection to the node that you pass into the command, allowing you to work faster without writing out the full ssh command.
 
 Options:
   -p, --cloud-provider='aws': Use this flag if you are using AWS EKS
   -i, --identity-file='~/.ssh/id_rsa': Identity file to use to ssh into the instance.
   -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
   -u, --ssh-user='ec2-user': Login user to be used for the ssh command.
-
-Usage:
-  kubectl plugin ssh [flags] [options]
+  
 
 Use "kubectl options" to list global command-line options (applies to all commands).
 ----
 
-== Roadmap
+#### Roadmap
 
 * Add support to SSHing into `worker nodes` from Windows machine.
-
