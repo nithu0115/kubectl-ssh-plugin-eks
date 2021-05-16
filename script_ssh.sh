@@ -98,6 +98,20 @@ else [ "$KUBECTL_PLUGINS_LOCAL_FLAG_CLOUD_PROVIDER" == "aws" ]
       esac
     done
   else
-    [[ ! -z "${IP}" ]] && echo "SSHing into Worker Node with IP: ${IP}" && ssh -i ${KUBECTL_PLUGINS_LOCAL_FLAG_IDENTITY_FILE} ${KUBECTL_PLUGINS_LOCAL_FLAG_SSH_USER}@$IP || echo "Can't SSH"; exit 1;
+    if [ ! -z "${IP}" ]
+    then
+      if [ "${KUBECTL_PLUGINS_LOCAL_FLAG_IDENTITY_FILE}" == "" ]
+      then
+        echo "SSHing into Worker Node using default identity file with IP: ${IP}"
+        ssh ${KUBECTL_PLUGINS_LOCAL_FLAG_SSH_USER}@$IP || echo "Can't SSH"; exit 1;
+      elif [ ! -z "${IP}" ]
+      then
+        echo "SSHing into Worker Node with IP: ${IP}"
+        ssh -i ${KUBECTL_PLUGINS_LOCAL_FLAG_IDENTITY_FILE} ${KUBECTL_PLUGINS_LOCAL_FLAG_SSH_USER}@$IP || echo "Can't SSH"; exit 1;
+      fi
+    else
+      echo "Cannot find IP address of node."
+      exit 1;
+    fi
   fi
 fi
